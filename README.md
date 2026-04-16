@@ -27,6 +27,8 @@ A step-by-step technical analysis of **Persistence** mechanisms and their implem
 * Leaves a clear file artifact on the disk.
 * Limited to the current user context.
 
+---
+
 ### 🔑 Step 2: Registry Run Key Persistence
 <img width="1423" height="743" alt="image" src="https://github.com/user-attachments/assets/b55083b2-e1b9-46c3-adc5-e96ccd2be887" />
 
@@ -42,6 +44,8 @@ A step-by-step technical analysis of **Persistence** mechanisms and their implem
 * Highly monitored by modern EDR/Antivirus solutions.
 * Leaves explicit forensic evidence in the registry.
 
+---
+
 ### 📡 Step 3: WMI Event Subscription Persistence
 **Hypothesis:** WMI event subscriptions can trigger payload execution based on system events (like idle time or system startup) without relying on traditional "Run" keys.
 
@@ -54,6 +58,8 @@ A step-by-step technical analysis of **Persistence** mechanisms and their implem
 **Limitations:**
 * Typically requires administrative privileges.
 * Detectable through advanced forensic analysis of WMI repositories (`Objects.data`).
+
+---
 
 ### 🎭 Step 4: DLL Hijacking (Discord Case Study)
 <img width="1919" height="1079" alt="image" src="https://github.com/user-attachments/assets/02429ab4-d6ab-4492-a662-682f6908b718" />
