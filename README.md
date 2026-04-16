@@ -58,15 +58,15 @@ A step-by-step technical analysis of **Persistence** mechanisms and their implem
 ### 🎭 Step 4: DLL Hijacking (Discord Case Study)
 <img width="1919" height="1079" alt="image" src="https://github.com/user-attachments/assets/02429ab4-d6ab-4492-a662-682f6908b718" />
 
-**Hypothesis:** Placing a crafted DLL in an application's directory can override the system DLL loading order and enable stealthy code execution.
+Hypothesis: Placing a crafted DLL in an application's directory can override the system DLL loading order and enable stealthy code execution.
 
-**Action:** Identified that `Discord.exe` loads `version.dll` via a relative path. Created a proxy DLL using C++ (function forwarding) and placed it alongside the binary.
+Action: Identified that Discord.exe loads version.dll via a relative path. To avoid application instability or crashes, a proxy DLL approach was implemented. A custom Python script was developed to dynamically extract the exported functions from the legitimate version.dll and generate the required #pragma forwarding directives. These directives were then embedded into a crafted version.dll, allowing it to forward all legitimate calls to the original library while executing the payload. The proxy DLL was placed alongside the target binary.
 
-**Result:** Successful ✅
+Result: Successful ✅
 
-**Technical Finding:** Applications that do not enforce absolute paths for DLL loading are vulnerable. This method allows the payload to run inside a "trusted" process, bypassing simple process-name-based detection.
+Technical Finding: Applications that do not enforce absolute paths for DLL loading are vulnerable. Proper proxying ensures stability while maintaining full control over execution flow. This method allows the payload to run inside a "trusted" process, bypassing simple process-name-based detection.
 
-**Key Insight:** Enables stealthy execution and can be extended to fileless delivery using shellcode loaders.
+Key Insight: Combining DLL proxying with automated export forwarding enables reliable and stealthy execution. This technique can be extended further with fileless payload delivery mechanisms such as shellcode loaders.
 
 ---
 
