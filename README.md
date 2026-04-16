@@ -58,16 +58,28 @@ A step-by-step technical analysis of **Persistence** mechanisms and their implem
 ### 🎭 Step 4: DLL Hijacking (Discord Case Study)
 <img width="1919" height="1079" alt="image" src="https://github.com/user-attachments/assets/02429ab4-d6ab-4492-a662-682f6908b718" />
 
-Hypothesis: Placing a crafted DLL in an application's directory can override the system DLL loading order and enable stealthy code execution.
+**Hypothesis:**  
+Placing a crafted DLL in an application's directory can override the system DLL loading order and enable stealthy code execution.  
 
-Action: Identified that Discord.exe loads version.dll via a relative path. To avoid application instability or crashes, a proxy DLL approach was implemented. A custom Python script was developed to dynamically extract the exported functions from the legitimate version.dll and generate the required #pragma forwarding directives. These directives were then embedded into a crafted version.dll, allowing it to forward all legitimate calls to the original library while executing the payload. The proxy DLL was placed alongside the target binary.
+**Action:**  
+Identified that `Discord.exe` loads `version.dll` via a relative path. To prevent application crashes and ensure stability, a proxy DLL technique was implemented.  
 
-Result: Successful ✅
+A custom Python script was developed to automate the process of extracting exported functions from the legitimate `version.dll`. The script generates the required `#pragma` forwarding directives, which were then embedded into a crafted `version.dll`.  
 
-Technical Finding: Applications that do not enforce absolute paths for DLL loading are vulnerable. Proper proxying ensures stability while maintaining full control over execution flow. This method allows the payload to run inside a "trusted" process, bypassing simple process-name-based detection.
+This proxy DLL forwards all legitimate function calls to the original library while executing the custom payload. The crafted DLL was placed alongside the target binary.  
 
-Key Insight: Combining DLL proxying with automated export forwarding enables reliable and stealthy execution. This technique can be extended further with fileless payload delivery mechanisms such as shellcode loaders.
+**Result:**  
+Successful ✅  
 
+**Technical Finding:**  
+Applications that do not enforce absolute paths for DLL loading are vulnerable to DLL hijacking. Proper proxying ensures application stability while maintaining control over execution flow.  
+
+This technique allows payload execution within a trusted process context, effectively bypassing basic process-name-based detection mechanisms.  
+
+**Key Insight:**  
+Automating export forwarding via scripting significantly improves reliability and scalability of DLL proxying attacks.  
+
+This approach can be extended further using fileless execution techniques, such as integrating shellcode loaders.
 ---
 
 ## 🛠️ Tools & Techniques
