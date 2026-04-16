@@ -1,3 +1,5 @@
+<img width="1024" height="682" alt="image" src="https://github.com/user-attachments/assets/7defe072-0f61-4661-9114-131deea433f7" />
+
 # 🧬 Khaelita Persistence Mechanisms Research
 
 A step-by-step technical analysis of **Persistence** mechanisms and their implementation within the Windows environment. This project documents various methods to maintain a foothold on a system, ranging from simple directory-based execution to advanced WMI event subscriptions.
@@ -26,6 +28,8 @@ A step-by-step technical analysis of **Persistence** mechanisms and their implem
 * Limited to the current user context.
 
 ### 🔑 Step 2: Registry Run Key Persistence
+<img width="812" height="195" alt="image" src="https://github.com/user-attachments/assets/ce42bf30-6434-4fab-a90a-adcdd97e9d1d" />
+
 **Hypothesis:** Adding an executable path to Windows Registry Run keys will trigger execution at user logon, making it slightly more "hidden" than a folder shortcut.
 
 **Action:** Inserted the payload path into `HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Run`.
@@ -51,10 +55,11 @@ A step-by-step technical analysis of **Persistence** mechanisms and their implem
 * Typically requires administrative privileges.
 * Detectable through advanced forensic analysis of WMI repositories (`Objects.data`).
 
-### 🎭 Step 4: DLL Hijacking (Spotify Case Study)
+### 🎭 Step 4: DLL Hijacking (Discord Case Study)
+<img width="604" height="442" alt="image" src="https://github.com/user-attachments/assets/60f27660-4540-4e8d-8995-f9ee044720f0" />
 **Hypothesis:** Placing a crafted DLL in an application's directory can override the system DLL loading order and enable stealthy code execution.
 
-**Action:** Identified that `Spotify.exe` loads `version.dll` via a relative path. Created a proxy DLL using C++ (function forwarding) and placed it alongside the binary.
+**Action:** Identified that `Discord.exe` loads `version.dll` via a relative path. Created a proxy DLL using C++ (function forwarding) and placed it alongside the binary.
 
 **Result:** Successful ✅
 
