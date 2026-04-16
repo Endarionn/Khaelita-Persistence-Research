@@ -1,0 +1,7 @@
+<Solution>
+  <Configurations>
+    <Platform Name="x64" />
+    <Platform Name="x86" />
+  </Configurations>
+  <Project Path="Khaelita_Registry_Persistance/Khaelita_Registry_Persistance.vcxproj" />
+</Solution>

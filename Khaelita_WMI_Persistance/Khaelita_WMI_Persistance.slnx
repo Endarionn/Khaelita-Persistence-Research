@@ -1,0 +1,7 @@
+<Solution>
+  <Configurations>
+    <Platform Name="x64" />
+    <Platform Name="x86" />
+  </Configurations>
+  <Project Path="Khaelita_WMI_Persistance/Khaelita_WMI_Persistance.vcxproj" Id="4a2473a2-28c5-45b8-92e2-7890187f7b03" />
+</Solution>

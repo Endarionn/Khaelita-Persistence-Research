@@ -1,0 +1,7 @@
+<Solution>
+  <Configurations>
+    <Platform Name="x64" />
+    <Platform Name="x86" />
+  </Configurations>
+  <Project Path="Fake_VERSION.dll/Fake_VERSION.dll.vcxproj" Id="986f7a5a-a5a2-4bac-b872-35fbb58e7875" />
+</Solution>
