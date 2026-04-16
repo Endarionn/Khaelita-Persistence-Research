@@ -28,7 +28,7 @@ A step-by-step technical analysis of **Persistence** mechanisms and their implem
 * Limited to the current user context.
 
 ### 🔑 Step 2: Registry Run Key Persistence
-<img width="812" height="195" alt="image" src="https://github.com/user-attachments/assets/ce42bf30-6434-4fab-a90a-adcdd97e9d1d" />
+<img width="1423" height="743" alt="image" src="https://github.com/user-attachments/assets/b55083b2-e1b9-46c3-adc5-e96ccd2be887" />
 
 **Hypothesis:** Adding an executable path to Windows Registry Run keys will trigger execution at user logon, making it slightly more "hidden" than a folder shortcut.
 
@@ -56,7 +56,8 @@ A step-by-step technical analysis of **Persistence** mechanisms and their implem
 * Detectable through advanced forensic analysis of WMI repositories (`Objects.data`).
 
 ### 🎭 Step 4: DLL Hijacking (Discord Case Study)
-<img width="604" height="442" alt="image" src="https://github.com/user-attachments/assets/60f27660-4540-4e8d-8995-f9ee044720f0" />
+<img width="1919" height="1079" alt="image" src="https://github.com/user-attachments/assets/02429ab4-d6ab-4492-a662-682f6908b718" />
+
 **Hypothesis:** Placing a crafted DLL in an application's directory can override the system DLL loading order and enable stealthy code execution.
 
 **Action:** Identified that `Discord.exe` loads `version.dll` via a relative path. Created a proxy DLL using C++ (function forwarding) and placed it alongside the binary.
